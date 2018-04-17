@@ -15,8 +15,8 @@ class GoodsCategory(models.Model):
                      )
     name = models.CharField(default='', max_length=30, verbose_name='类别名', help_text='类别名')
     code = models.CharField(default='', max_length=30, verbose_name='类别code', help_text='类别code')
-    desc = models.CharField(default='', verbose_name='类别描述', help_text='类别描述')
-    category_type = models.CharField(choices=CATEGORY_TYPE, verbose_name='类目级别', help_text='类目级别')
+    desc = models.CharField(max_length=300,default='', verbose_name='类别描述', help_text='类别描述')
+    category_type = models.CharField(max_length=32,choices=CATEGORY_TYPE, verbose_name='类目级别', help_text='类目级别')
     # 外键指向自己
     parent_category = models.ForeignKey('self', null=True, blank=True, verbose_name='父类别', help_text='类目级别',
                                         related_name='sub_cat')
@@ -35,9 +35,10 @@ class GoodsCategoryBrand(models.Model):
     """
     品牌名
     """
+    #在前端一级类目下面对应着多个品牌名
     name = models.CharField(default='', max_length=30, verbose_name='品牌', help_text='品牌')
     desc = models.TextField(default='', max_length=200, verbose_name='品牌描述', help_text='品牌描述')
-    image = models.ImageField(max_length=200, upload_to='brand/images/')
+    image = models.ImageField(max_length=200, upload_to='brands/')
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:
@@ -66,7 +67,7 @@ class Goods(models.Model):
     goods_desc = UEditorField(verbose_name=u'内容', imagePath='goods/images/', width=1000, height=300,
                               filePath='goods/files/', default='')
     ship_free = models.BooleanField(default=True, verbose_name='是否承担运费')
-    goods_front_image = models.ImageField(upload_to='', null=True, blank=True, verbose_name='封面图')
+    goods_front_image = models.ImageField(upload_to='goods/images/', null=True, blank=True, verbose_name='封面图')
     is_new = models.BooleanField(default=False, verbose_name='是否新品')
     is_hot = models.BooleanField(default=False, verbose_name='是否热销')
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
