@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'DjangoUeditor',
     'crispy_forms',
     'rest_framework',
+    'django_filters',
 
 ]
 
@@ -137,5 +138,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     # 'PAGE_SIZE': 10,
 }
