@@ -9,14 +9,15 @@ class GoodsCategory(models.Model):
     """
     商品类别
     """
-    CATEGORY_TYPE = ((1, '一级类目'),
-                     (2, '二级类目'),
-                     (3, '三级类目 '),
-                     )
+    CATEGORY_TYPE = (
+        ('1', '一级类目'),
+        ('2', '二级类目'),
+        ('3', '三级类目'),
+    )
     name = models.CharField(default='', max_length=30, verbose_name='类别名', help_text='类别名')
     code = models.CharField(default='', max_length=30, verbose_name='类别code', help_text='类别code')
-    desc = models.CharField(max_length=300,default='', verbose_name='类别描述', help_text='类别描述')
-    category_type = models.CharField(max_length=32,choices=CATEGORY_TYPE, verbose_name='类目级别', help_text='类目级别')
+    desc = models.CharField(max_length=300, default='', verbose_name='类别描述', help_text='类别描述')
+    category_type = models.CharField(max_length=32, choices=CATEGORY_TYPE, verbose_name='类目级别', help_text='类目级别')
     # 外键指向自己
     parent_category = models.ForeignKey('self', null=True, blank=True, verbose_name='父类别', help_text='类目级别',
                                         related_name='sub_cat')
@@ -27,7 +28,7 @@ class GoodsCategory(models.Model):
         verbose_name = "商品类别"
         verbose_name_plural = verbose_name
 
-        def __str__(self):
+    def __str__(self):
             return self.name
 
 
@@ -35,7 +36,7 @@ class GoodsCategoryBrand(models.Model):
     """
     品牌名
     """
-    #在前端一级类目下面对应着多个品牌名
+    # 在前端一级类目下面对应着多个品牌名
     name = models.CharField(default='', max_length=30, verbose_name='品牌', help_text='品牌')
     desc = models.TextField(default='', max_length=200, verbose_name='品牌描述', help_text='品牌描述')
     image = models.ImageField(max_length=200, upload_to='brands/')
@@ -45,7 +46,7 @@ class GoodsCategoryBrand(models.Model):
         verbose_name = "品牌"
         verbose_name_plural = verbose_name
 
-        def __str__(self):
+    def __str__(self):
             return self.name
 
 
@@ -76,7 +77,7 @@ class Goods(models.Model):
         verbose_name = "商品"
         verbose_name_plural = verbose_name
 
-        def __str__(self):
+    def __str__(self):
             return self.name
 
 
@@ -93,7 +94,7 @@ class Goods_Image(models.Model):
         verbose_name = "商品轮播图"
         verbose_name_plural = verbose_name
 
-        def __str__(self):
+    def __str__(self):
             return self.goods.name
 
 
@@ -110,5 +111,17 @@ class Banner(models.Model):
         verbose_name = "轮播商品"
         verbose_name_plural = verbose_name
 
-        def __str__(self):
+    def __str__(self):
             return self.goods.name
+
+
+class IndexAd(models.Model):
+    category = models.ForeignKey(GoodsCategory, related_name='category', verbose_name="商品类目")
+    goods = models.ForeignKey(Goods, related_name='goods')
+
+    class Meta:
+        verbose_name = '首页商品类别广告'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.goods.name

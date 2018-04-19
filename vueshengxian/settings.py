@@ -51,10 +51,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'django_filters',
-
+    'corsheaders',
+    'xadmin',
 ]
 
 MIDDLEWARE = [
+    # 配置前端可以进行跨端口访问
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,8 +65,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
 
+]
+# 配置前端可以进行跨端口访问
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'vueshengxian.urls'
 
 TEMPLATES = [

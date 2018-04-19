@@ -3,7 +3,27 @@ from rest_framework import serializers
 from goods.models import Goods, GoodsCategory
 
 
+class CategorySerializer3(serializers.ModelSerializer):
+    """
+    商品分类列表的三重嵌套实现，获取一级类目，二级类目，三级类目
+    """
+
+    class Meta:
+        model = GoodsCategory
+        fields = "__all__"
+
+
+class CategorySerializer2(serializers.ModelSerializer):
+    sub_cat = CategorySerializer3(many=True)
+
+    class Meta:
+        model = GoodsCategory
+        fields = "__all__"
+
+
 class CategorySerializer(serializers.ModelSerializer):
+    sub_cat = CategorySerializer2(many=True)
+
     class Meta:
         model = GoodsCategory
         fields = "__all__"
@@ -23,3 +43,13 @@ class GoodsSerializer(serializers.ModelSerializer):
         model = Goods
         # fields = ['name', 'click_nums', 'market_price', 'add_time']
         fields = "__all__"  # 是获取所有字段
+
+
+class GoodsCategorySerializer(serializers.ModelSerializer):
+    """
+    商品类别序列化
+    """
+
+    class Meta:
+        model = Goods
+        fields = "__all__"
