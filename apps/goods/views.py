@@ -26,6 +26,8 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     # 还需要在下面声明一下
 
     queryset = Goods.objects.all()
+    # 用户登录token
+    # authentication_classes = ('rest_framework.authentication.TokenAuthentication',)
     serializer_class = GoodsSerializer
     # 分页
     pagination_class = GoodsPagination
@@ -38,7 +40,7 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     ordering_fields = ['sold_nums', 'shop_price']
 
 
-class CategoryViewSet(mixins.ListModelMixin,mixins.RetrieveModelMixin,viewsets.GenericViewSet):
+class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
     list:
     商品分类列表数据

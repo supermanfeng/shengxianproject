@@ -15,6 +15,7 @@ class GoodsFilter(django_filters.rest_framework.FilterSet):
     # name = django_filters.CharFilter(name='name', lookup_expr='icontains')
     top_category = django_filters.NumberFilter(method='top_category_filter')
 
+    # 查看商品的类目,Q对象是下面三者满足其一就可
     def top_category_filter(self, queryset, name, value):
         return queryset.filter(Q(category_id=value) | Q(category__parent_category_id=value) | Q(
             category__parent_category__parent_category_id=value))
