@@ -23,11 +23,17 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 import xadmin
 from goods.views import GoodsListViewSet, CategoryViewSet
+from users.views import SmsCodeViewset
 from vueshengxian.settings import MEDIA_ROOT
 
 router = DefaultRouter()
 # 配置goods的url
 router.register(r'goods', GoodsListViewSet, base_name='goods')
+router.register(r'codes', SmsCodeViewset, base_name="codes")
+
+router.register(r'hotsearchs', HotSearchsViewset, base_name="hotsearchs")
+
+router.register(r'users', UserViewset, base_name="users")
 goods_list = GoodsListViewSet.as_view({
     'get': 'list',
 })
