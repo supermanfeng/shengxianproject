@@ -3,8 +3,9 @@ from rest_framework import status, mixins, generics, viewsets, filters
 from rest_framework.pagination import PageNumberPagination
 
 from goods.filter import GoodsFilter
-from .serializers import GoodsSerializer, CategorySerializer
-from .models import Goods, GoodsCategory
+from .serializers import GoodsSerializer, CategorySerializer, BannerSerializer, HotWordsSerializer, \
+    IndexCategorySerializer
+from .models import Goods, GoodsCategory, Banner, HotSearchWords
 
 
 class GoodsPagination(PageNumberPagination):
@@ -14,7 +15,7 @@ class GoodsPagination(PageNumberPagination):
     max_limit = 100
 
 
-class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     # 商品列表页
     # 如果需要分页就需要对rest_framework里面的settings里面的
     #  'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -49,3 +50,27 @@ class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets
     """
     queryset = GoodsCategory.objects.filter(category_type=1)
     serializer_class = CategorySerializer
+
+
+class HotSearchsViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    获取热搜词列表
+    """
+    queryset = HotSearchWords.objects.all().order_by("-index")
+    serializer_class = HotWordsSerializer
+
+
+class BannerViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    获取轮播图列表
+    """
+    queryset = Banner.objects.all().order_by("index")
+    serializer_class = BannerSerializer
+
+
+class IndexCategoryViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    首页商品分类数据
+    """
+    queryset = GoodsCategory.objects.filter(is_tab=True, name__in=["生鲜食品", "酒水饮料"])
+    serializer_class = IndexCategorySerializer

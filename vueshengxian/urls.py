@@ -22,8 +22,9 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_jwt.views import obtain_jwt_token
 
 import xadmin
-from goods.views import GoodsListViewSet, CategoryViewSet
-from users.views import SmsCodeViewset
+from goods.views import GoodsListViewSet, CategoryViewSet, HotSearchsViewset
+from user_operation.views import UserFavViewset
+from users.views import SmsCodeViewset, UserViewset
 from vueshengxian.settings import MEDIA_ROOT
 
 router = DefaultRouter()
@@ -40,6 +41,9 @@ goods_list = GoodsListViewSet.as_view({
 
 # 配置category的url
 router.register(r'categorys', CategoryViewSet, base_name='categorys')
+
+# 收藏
+router.register(r'userfavs', UserFavViewset, base_name="userfavs")
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     # 前端商品图片url
@@ -49,8 +53,8 @@ urlpatterns = [
     url(r'docs/$', include_docs_urls(title='生鲜网')),
     # 登录配置
     url(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    #drf自带的用户token认证模式
-    url(r'^api-token-auth.',views.obtain_auth_token),
+    # drf自带的用户token认证模式
+    url(r'^api-token-auth.', views.obtain_auth_token),
     # jwt的认证接口
     url(r'^login/', obtain_jwt_token),
 ]
