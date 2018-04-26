@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d1f1c5f-03e4-4962-8af1-1714b4d10fb1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/user_operation/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/utils/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/goods/filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/goods/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/goods/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/goods/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_operation/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_operation/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_operation/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_operation/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_tools/data/category_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_tools/data/category_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_tools/data/product_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_tools/data/product_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_tools/import_category_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_tools/import_category_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_tools/import_goods_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_tools/import_goods_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vueshengxian/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/vueshengxian/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vueshengxian/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/vueshengxian/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -114,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/vueshengxian/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="154" column="7" selection-start-line="154" selection-start-column="7" selection-end-line="154" selection-end-column="7" />
+              <caret line="154" selection-start-line="154" selection-end-line="154" />
               <folding>
                 <element signature="e#314#323#0" expanded="true" />
               </folding>
@@ -198,8 +187,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-56" />
-    <option name="y" value="62" />
+    <option name="x" value="36" />
+    <option name="y" value="37" />
     <option name="width" value="1366" />
     <option name="height" value="693" />
   </component>
@@ -412,12 +401,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524660636456</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="商品详情页,热卖商品,用户收藏商品">
+      <created>1524748834311</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1524748834311</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="532" y="50" width="1366" height="693" extended-state="0" />
-    <editor active="true" />
+    <frame x="36" y="37" width="1366" height="693" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50333333" side_tool="true" weight="0.3043478" />
@@ -455,7 +450,8 @@
     <MESSAGE value="商品列表页的过滤，查询，排序" />
     <MESSAGE value="商品列表页后台数据和前端交互,查询和排序功能" />
     <MESSAGE value="jwt用户安全登录,使用云片来进行手机号注册账号,使用手机号登录 账户" />
-    <option name="LAST_COMMIT_MESSAGE" value="jwt用户安全登录,使用云片来进行手机号注册账号,使用手机号登录 账户" />
+    <MESSAGE value="商品详情页,热卖商品,用户收藏商品" />
+    <option name="LAST_COMMIT_MESSAGE" value="商品详情页,热卖商品,用户收藏商品" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -826,7 +822,7 @@
     <entry file="file://$PROJECT_DIR$/vueshengxian/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="154" column="7" selection-start-line="154" selection-start-column="7" selection-end-line="154" selection-end-column="7" />
+          <caret line="154" selection-start-line="154" selection-end-line="154" />
           <folding>
             <element signature="e#314#323#0" expanded="true" />
           </folding>
